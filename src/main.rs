@@ -7,8 +7,7 @@ mod vga_text;
 use vga_text::{Attribute,Color,Cursor};
 
 #[allow(unconditional_panic)]
-#[no_mangle]
-pub extern "C" fn _start() -> ! {
+pub fn kmain() {
     let mut main_cursor = Cursor::new(
         0, 0,
         80, 25,
@@ -27,8 +26,6 @@ pub extern "C" fn _start() -> ! {
     write!(cursor, "Hello, {}!\n", "world").unwrap();
     
     panic!("here");
-
-    loop {}
 }
 
 #[panic_handler]
