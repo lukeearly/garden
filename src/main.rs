@@ -1,8 +1,8 @@
 #![no_std]
 #![no_main]
 
-mod io;
 mod arch;
+mod io;
 mod macros;
 mod panic;
 

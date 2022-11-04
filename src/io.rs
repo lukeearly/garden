@@ -1,4 +1,7 @@
-use core::{mem::MaybeUninit, ptr::{read_volatile, write_volatile}};
+use core::{
+    mem::MaybeUninit,
+    ptr::{read_volatile, write_volatile},
+};
 
 pub trait Io {
     type Value: Copy;
@@ -10,16 +13,14 @@ pub trait Io {
 
 #[repr(transparent)]
 pub struct Mmio<T> {
-    value: MaybeUninit<T>
+    value: MaybeUninit<T>,
 }
 
 impl<T: Copy> Io for Mmio<T> {
     type Value = T;
 
     fn read(&self) -> Self::Value {
-        unsafe {
-            read_volatile(self.value.as_ptr())
-        }
+        unsafe { read_volatile(self.value.as_ptr()) }
     }
 
     fn write(&mut self, value: Self::Value) {

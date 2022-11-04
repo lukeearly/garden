@@ -5,14 +5,14 @@ use core::marker::PhantomData;
 #[repr(transparent)]
 pub struct Pio<V> {
     port: u16,
-    value: PhantomData<V>
+    value: PhantomData<V>,
 }
 
 impl<V> Pio<V> {
     pub fn new(port: u16) -> Self {
         Pio::<V> {
             port,
-            value: PhantomData
+            value: PhantomData,
         }
     }
 }
