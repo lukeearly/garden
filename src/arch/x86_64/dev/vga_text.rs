@@ -95,7 +95,7 @@ pub struct TextBuffer {
 use lazy_static::lazy_static;
 use spin::Mutex;
 
-const VGA_ADDRESS: usize = 0xb8000;
+const VGA_ADDRESS: usize = 0xc00b8000;
 lazy_static! {
     pub static ref MAIN_BUFFER: Mutex<&'static mut TextBuffer> =
         Mutex::new(unsafe { &mut *(VGA_ADDRESS as *mut TextBuffer) });

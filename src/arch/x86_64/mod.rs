@@ -1,3 +1,4 @@
+pub mod asm;
 pub mod dev;
 pub mod entry;
 pub mod io;

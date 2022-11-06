@@ -39,6 +39,9 @@ lazy_static! {
 macro_rules! print {
     ($($arg:tt)*) => ({
         use core::fmt::Write;
-        write!(crate::arch::log::WRITER.lock(), $($arg)*).unwrap()
+        Pio::<u8>::new(0xe9).write(b'R');
+        let mut lock = crate::arch::log::WRITER.lock();
+        Pio::<u8>::new(0xe9).write(b'D');
+        write!(lock, $($arg)*).unwrap();
     });
 }
