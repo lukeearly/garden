@@ -1,2 +1,5 @@
 /target
 .vscode
+sysroot
+bx_enh_dbg.ini
+garden.iso
